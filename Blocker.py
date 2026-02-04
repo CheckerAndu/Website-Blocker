@@ -12,8 +12,25 @@ website_list = ["www.facebook.com", "facebook.com"]
 
 while True:
     #Check current time
-    if 9 <= datetime.now().hour < 10:
-        print("Blocking Websites till 10 o'clock")
+    if 9 <= datetime.now().hour < 14:
+        print("Blocking Websites")
+
+        with open(hosts_path, 'r+') as file:
+            content = file.read()
+            for website in website_list:
+                if website in content:
+                    pass
+                else:
+                    file.write(redirect + " " + website + "\n")
     else:
         print("Free time! Unblocking Websites")
-    time.sleep(5)
+
+        with open(hosts_path, "r+") as file:
+            content = file.readlines()
+
+            file.seek(0)
+            for line in content:
+                if not any(website in line for website in website_list):
+                    file.write(line)
+            file.truncate()
+    time.sleep(300)
