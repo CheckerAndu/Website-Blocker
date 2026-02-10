@@ -2,31 +2,31 @@ import json
 import time
 
 with open('LinksDatabase.json', 'r') as BlockedFile:
-    Links = json.load(BlockedFile)
+    Website = json.load(BlockedFile)
 
 while True:
-    print("These are your blocked websites:" , ", ".join(Links))
+    print("These are your blocked websites:" , ", ".join(Website))
     time.sleep(1)
     choice = input("1. Add another link 2. Remove a link\n")
 
     if choice == '1':
-        NewLink = input("Paste the whished link:\n")
+        NewWeb = input("Paste the whished Website:\n")
         time.sleep(1)
-        if NewLink in Links:
-            print(f"{NewLink} is already in your blocked links!")
+        if Website in Website:
+            print(f"{NewWeb} is already in your blocked links!")
             time.sleep(2)
             continue
-        Links.append(NewLink)
+        Website.append(NewWeb)
         print("Link successfully added to your blocked links!")
 
     elif choice == '2':
-        RemoveLink = input("Which link do you want to remove?:\n")
+        RemoveLink = input("Which website do you want to remove?:\n")
         time.sleep(1)
-        if RemoveLink not in Links:
+        if RemoveLink not in Website:
             print(f"{RemoveLink} is not in your blocked websites!")
             time.sleep(2)
             continue
-        Links.remove(RemoveLink)
+        Website.remove(RemoveLink)
         print("Link successfully removed!")
     
     else:
@@ -38,7 +38,7 @@ while True:
     quit = input("Do you wish to quit? y/n\n")
     if quit == 'y'.lower():
         with open('LinksDatabase.json', 'w') as BlockedFile:
-            json.dump(Links, BlockedFile)
+            json.dump(Website, BlockedFile)
             time.sleep(2)
             print("Data Saved!")
             time.sleep(1)

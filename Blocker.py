@@ -1,10 +1,13 @@
 import time
 from datetime import datetime
+import json
+
+with open('LinksDatabase.json', 'r') as BlockedFile:
+    website_list = json.load(BlockedFile)
 
 # The path to your Windows hosts file
 hosts_path = r"C:\Windows\System32\drivers\etc\hosts"
 redirect = "127.0.0.1"
-website_list = ["www.facebook.com", "facebook.com"]
 
 def MainMenu():
     print("------------------------------------------")
@@ -17,6 +20,10 @@ def MainMenu():
     choice = input("What do you want to do?\n")
     if choice == "1":
         Block()
+    elif choice == '2':
+        print("Closing program")
+        time.sleep(2)
+        exit()
 
 def Block():
     try:
