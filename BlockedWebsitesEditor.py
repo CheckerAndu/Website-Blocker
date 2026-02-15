@@ -10,7 +10,7 @@ while True:
     choice = input("1. Add another link 2. Remove a link\n")
 
     if choice == '1':
-        NewWeb = input("Paste the whished Website:\n")
+        NewWeb = input("Enter the whished Website:\n")
         time.sleep(1)
         if Website in Website:
             print(f"{NewWeb} is already in your blocked links!")
@@ -43,5 +43,6 @@ while True:
             print("Data Saved!")
             time.sleep(1)
             print("You can close the program!")
+            break
 
     
